@@ -7,10 +7,10 @@
 
 using namespace std;
 
-struct inventoryBox
+struct inventoryRow
 {
+    int quantity, boxId;
     string box, item;
-    int quantity;
 };
 
 
@@ -20,8 +20,11 @@ void createTables(sqlite3* db);
 
 void addBox(sqlite3 *db, const string &name);
 int addItem(sqlite3 *db, const string &name);
-void addOrUpdateInventory(sqlite3 *db, int boxId, int itemId, int quantity);
+void addInventory(sqlite3 *db, int boxId, int itemId, int quantity);
+void removeQuantity(sqlite3* db, int boxId, int itemId, int amount);
+void deleteInventory(sqlite3* db, int boxId, int itemId);
 
-vector<InventoryRow> getInventory(sqlite3* db);
+
+vector<inventoryRow> getInventory(sqlite3* db);
 
 #endif
